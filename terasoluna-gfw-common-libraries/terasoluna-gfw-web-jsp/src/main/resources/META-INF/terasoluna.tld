@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
   version="2.1">
 
@@ -290,6 +291,13 @@
     <description>A Tag that renders transaction token in a hidden tag</description>
     <name>transaction</name>
     <tag-class>org.terasoluna.gfw.web.token.transaction.TransactionTokenTag</tag-class>
+    <body-content>JSP</body-content>
+  </tag>
+
+  <tag>
+    <description>A tag that embeds a token in a meta tag</description>
+    <name>transactionMetaTag</name>
+    <tag-class>org.terasoluna.gfw.web.token.transaction.TransactionMetaTag</tag-class>
     <body-content>JSP</body-content>
   </tag>
 </taglib>
