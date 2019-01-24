@@ -169,7 +169,10 @@ public class TransactionTokenInterceptor implements HandlerInterceptor {
 
             // This logic is added here to minimize the impact to any other existing logic
 
-            String tokenStr = request.getParameter(TOKEN_REQUEST_PARAMETER);
+            String tokenStr = request.getHeader(TOKEN_REQUEST_PARAMETER);
+            if (tokenStr == null) {
+                tokenStr = request.getParameter(TOKEN_REQUEST_PARAMETER);
+            }
             if (null != tokenStr) {
                 removeToken(new TransactionToken(tokenStr));
             }
@@ -195,7 +198,10 @@ public class TransactionTokenInterceptor implements HandlerInterceptor {
      * @return currentToken transactionToken received from the request
      */
     TransactionToken createReceivedToken(final HttpServletRequest request) {
-        String tokenStr = request.getParameter(TOKEN_REQUEST_PARAMETER);
+        String tokenStr = request.getHeader(TOKEN_REQUEST_PARAMETER);
+        if (tokenStr == null) {
+            tokenStr = request.getParameter(TOKEN_REQUEST_PARAMETER);
+        }
         TransactionToken currentToken = new TransactionToken(tokenStr);
         return currentToken;
     }
