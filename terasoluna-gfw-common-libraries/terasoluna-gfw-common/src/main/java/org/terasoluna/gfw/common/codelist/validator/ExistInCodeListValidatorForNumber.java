@@ -18,7 +18,8 @@ package org.terasoluna.gfw.common.codelist.validator;
 /**
  * Concrete validation implementation class for {@link org.terasoluna.gfw.common.codelist.ExistInCodeList} custom annotation.
  * <p>
- * Used if the value of the field for which the custom annotation is used, is of type {@link Long} <br>
+ * Used if the value of the field for which the custom annotation is used, is of type {@link Number} ({@link Integer},
+ * {@link Long}, etc ...) <br>
  * <br>
  * Validates whether the value of field is a valid code existing in the {@link org.terasoluna.gfw.common.codelist.CodeList}
  * specified <br>
@@ -27,15 +28,15 @@ package org.terasoluna.gfw.common.codelist.validator;
  * @since 5.4.2
  */
 
-public class ExistInCodeListValidatorForLong extends
-                                             AbstractExistInCodeListValidator<Long> {
+public class ExistInCodeListValidatorForNumber extends
+                                               AbstractExistInCodeListValidator<Number> {
 
     /**
      * Fetches the code value which is the target of validation
      * @see org.terasoluna.gfw.common.codelist.validator.AbstractExistInCodeListValidator#getCode(Object)
      */
     @Override
-    protected String getCode(Long value) {
+    protected String getCode(Number value) {
         return value == null ? null
                 : valueFormat == null ? value.toString()
                         : String.format(valueFormat, value);
